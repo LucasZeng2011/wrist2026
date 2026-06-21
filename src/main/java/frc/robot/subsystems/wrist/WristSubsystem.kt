@@ -1,21 +1,18 @@
 package frc.robot.subsystems.wrist
 
 import edu.wpi.first.units.measure.Angle
-import edu.wpi.first.wpilibj.smartdashboard.Field2d
 import edu.wpi.first.wpilibj2.command.SubsystemBase
-import org.littletonrobotics.junction.AutoLog
 import org.littletonrobotics.junction.AutoLogOutput
 import edu.wpi.first.wpilibj.Alert
 import edu.wpi.first.wpilibj2.command.Command
 import edu.wpi.first.wpilibj2.command.Commands
 import edu.wpi.first.wpilibj2.command.WaitCommand
-import org.littletonrobotics.junction.Logger
 import kotlin.math.abs
 
 class WristSubsystem (
     private val io: WristIO
 ) : SubsystemBase() {
-    //private val inputs: WristIO.WristIOInputs() ???
+    private val inputs: WristIO.WristIOInputs = WristIO.WristIOInputs()
 
     @AutoLogOutput(key = "Wrist/WristAngle")
     var wristPitch: Double = 0.0
@@ -32,18 +29,14 @@ class WristSubsystem (
         Alert("Wrist Disconnected (ID ${WristConstants.WRIST_MOTOR_ID}).", Alert.AlertType.kError)
 
     override fun periodic() {
-        //io.updateInputs(inputs)
-        //Logger.processInputs("Wrist", inputs)
+        io.updateInputs(inputs)
 
-        //wristDisconnectedAlert.set(!inputs.wristConnected)
+        wristDisconnectedAlert.set(!inputs.wristConnected)
     }
 
     @AutoLogOutput(key = "Wrist/WristAtTolerance")
-    fun isWristAngleAtTolerance(): Boolean {
-        var error = 0.0 //abs(inputs.wristPitch - wristTargetAngle)
-
-        return error < WristConstants.WRIST_ANGLE_ERROR_TOLERANCE
-    }
+    fun isWristAngleAtTolerance(): Boolean =
+        abs(inputs.wristPitch - wristTargetAngle) < WristConstants.WRIST_ANGLE_ERROR_TOLERANCE
 
     fun runCommandOne(angle: Angle): Command =
         runOnce { io.setWristAngle(angle) }

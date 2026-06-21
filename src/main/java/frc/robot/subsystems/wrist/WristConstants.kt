@@ -20,6 +20,14 @@ object WristConstants {
     const val WRIST_KS = 0.0
     const val WRIST_KV = 0.0
 
+    const val LOOP_TIME = 0.1
+
     // Physical
     const val WRIST_GEARING = 1.0 / 1.0
+    const val WRIST_INERTIA = 1.0
+    const val WRIST_LENGTH = 1.0
+
+    const val MIN_ANGLE = 1.0
+    const val MAX_ANGLE = 2.0
+
 }
