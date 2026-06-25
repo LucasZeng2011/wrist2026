@@ -14,7 +14,7 @@ class WristIOSim() : WristIOHardware() {
             WristConstants.MIN_ANGLE,
             WristConstants.MAX_ANGLE,
             false,
-            0.0
+            WristConstants.MIN_ANGLE
         )
 
     private val wristSimState = wristMotor.simState

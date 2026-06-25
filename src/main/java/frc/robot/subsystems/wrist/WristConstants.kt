@@ -24,8 +24,8 @@ object WristConstants {
 
     // Physical
     const val WRIST_GEARING = 1.0 / 1.0
-    const val WRIST_INERTIA = 1.0
-    const val WRIST_LENGTH = 1.0
+    const val WRIST_INERTIA = 37.195
+    const val WRIST_LENGTH = 2.297
 
     const val MIN_ANGLE = 1.0
     const val MAX_ANGLE = 2.0
