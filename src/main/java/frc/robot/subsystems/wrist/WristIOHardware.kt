@@ -55,8 +55,6 @@ open class WristIOHardware : WristIO {
                 kP = WristConstants.WRIST_KP
                 kI = WristConstants.WRIST_KI
                 kD = WristConstants.WRIST_KD
-                kS = WristConstants.WRIST_KS
-                kV = WristConstants.WRIST_KV
             }
         }
 
@@ -74,11 +72,15 @@ open class WristIOHardware : WristIO {
         wristMotor.setControl(wristVoltageRequest.withOutput(voltage))
     }
 
-    override fun setWristVelocity(velocity: AngularVelocity) {
+    override fun setWristVelocity(velocity: Double) {
         wristMotor.setControl(wristVelocityRequest.withVelocity(velocity))
     }
 
-    override fun setWristAngle(angle: Angle) {
+    override fun setWristAngle(angle: Double) {
         wristMotor.setControl(wristAngleRequest.withPosition(angle))
+    }
+
+    override fun stopWrist() {
+        wristMotor.setControl(wristVoltageRequest.withOutput(0.0))
     }
 }

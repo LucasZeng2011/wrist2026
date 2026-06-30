@@ -1,6 +1,5 @@
 package frc.robot.subsystems.wrist
 
-import edu.wpi.first.units.measure.Angle
 import edu.wpi.first.wpilibj2.command.SubsystemBase
 import org.littletonrobotics.junction.AutoLogOutput
 import edu.wpi.first.wpilibj.Alert
@@ -38,10 +37,10 @@ class WristSubsystem (
     fun isWristAngleAtTolerance(): Boolean =
         abs(inputs.wristPitch - wristTargetAngle) < WristConstants.WRIST_ANGLE_ERROR_TOLERANCE
 
-    fun runCommandOne(angle: Angle): Command =
+    fun runCommandOne(angle: Double): Command =
         runOnce { io.setWristAngle(angle) }
 
-    fun runCommandTwo(angleOne: Angle, angleTwo: Angle): Command =
+    fun runCommandTwo(angleOne: Double, angleTwo: Double): Command =
         Commands.sequence(
             runOnce { io.setWristAngle(angleOne) },
             WaitCommand(1.0),

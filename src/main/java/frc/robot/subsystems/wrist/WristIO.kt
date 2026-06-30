@@ -1,7 +1,5 @@
 package frc.robot.subsystems.wrist
 
-import edu.wpi.first.units.measure.Angle
-import edu.wpi.first.units.measure.AngularVelocity
 import org.littletonrobotics.junction.AutoLog
 
 interface WristIO {
@@ -26,7 +24,9 @@ interface WristIO {
 
     fun setWristVoltage(voltage: Double) {}
 
-    fun setWristVelocity(velocity: AngularVelocity) {}
+    fun setWristVelocity(velocity: Double) {}
 
-    fun setWristAngle(angle: Angle) {}
+    fun setWristAngle(angle: Double) {}
+
+    fun stopWrist() {} //cut all voltage
 }

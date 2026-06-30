@@ -21,7 +21,7 @@ import edu.wpi.first.wpilibj2.command.sysid.SysIdRoutine
 import edu.wpi.first.wpilibj2.command.sysid.SysIdRoutine.Mechanism
 import frc.robot.Constants.DriveConstants
 import frc.robot.util.FieldUtil
-import limelight.networktables.AngularVelocity3d
+//import limelight.networktables.AngularVelocity3d
 import org.littletonrobotics.junction.Logger
 import kotlin.jvm.optionals.getOrElse
 import kotlin.math.abs
@@ -29,7 +29,7 @@ import kotlin.math.abs
 class DriveSubsystem(
     private val io: DriveIO
 ) : SubsystemBase() {
-    private val inputs: DriveIOInputsAutoLogged = DriveIOInputsAutoLogged()
+    /*private val inputs: DriveIOInputsAutoLogged = DriveIOInputsAutoLogged()
     private val field: Field2d = Field2d().apply {
         SmartDashboard.putData("Field", this)
     }
@@ -142,5 +142,5 @@ class DriveSubsystem(
                 null,
                 this,
             ),
-        )
+        )*/
 }
